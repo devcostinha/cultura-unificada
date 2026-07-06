@@ -1,0 +1,586 @@
+/* ======================================================================
+   CULTURA UNIFICADA — ESTILOS GLOBAIS
+   ======================================================================
+   Este arquivo é organizado em blocos bem separados e comentados, para
+   que cada parte possa ser editada sem medo de quebrar as outras:
+
+     1. RESET BÁSICO
+     2. VARIÁVEIS — TEMA CLARO  (prefers-color-scheme: light)
+     3. VARIÁVEIS — TEMA ESCURO (prefers-color-scheme: dark)
+     4. TIPOGRAFIA E ELEMENTOS BASE
+     5. UTILITÁRIOS DE GRADIENTE, CARDS E BOTÕES
+     6. LAYOUT — DESKTOP   (min-width: 769px)
+     7. LAYOUT — MOBILE    (max-width: 768px)
+
+   O tema (claro/escuro) é escolhido automaticamente pelo sistema
+   operacional do visitante via `prefers-color-scheme`. Não existe botão
+   manual de alternância — é proposital, conforme especificação do
+   projeto.
+   ====================================================================== */
+
+/* ----------------------------------------------------------------------
+   1. RESET BÁSICO
+   ---------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ----------------------------------------------------------------------
+   2. VARIÁVEIS — TEMA CLARO (padrão / prefers-color-scheme: light)
+   ---------------------------------------------------------------------- */
+:root {
+  /* Paleta base — vermelho, marrom e laranja, sempre em degradê */
+  --color-primary: #c1272d;
+  --color-primary-soft: #e0524a;
+  --color-secondary: #6b3f2a;
+  --color-secondary-soft: #8a5a3c;
+  --color-accent: #f2994a;
+  --color-accent-soft: #ffb877;
+
+  /* Fundo e superfícies — tons quentes, nunca branco frio nem azulado */
+  --color-bg: #fff6ee;
+  --color-bg-alt: #fdebdd;
+  --color-surface: #fffaf4;
+  --color-surface-alt: #fff1e3;
+  --color-border: #e8c9ab;
+
+  /* Texto */
+  --color-text: #2b1810;
+  --color-text-muted: #6b5142;
+  --color-text-on-gradient: #fff6ee;
+
+  /* Gradientes — usados em fundos, cards de destaque e botões */
+  --gradient-hero: linear-gradient(135deg, #6b3f2a 0%, #c1272d 55%, #f2994a 100%);
+  --gradient-primary: linear-gradient(135deg, #c1272d 0%, #f2994a 100%);
+  --gradient-soft: linear-gradient(135deg, #fdebdd 0%, #ffe3c7 100%);
+  --gradient-card-border: linear-gradient(135deg, #c1272d, #f2994a);
+
+  --shadow-sm: 0 2px 8px rgba(107, 63, 42, 0.12);
+  --shadow-md: 0 8px 24px rgba(107, 63, 42, 0.18);
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --font-heading: var(--next-font-heading), "Segoe UI", system-ui, sans-serif;
+  --font-body: var(--next-font-body), "Segoe UI", system-ui, sans-serif;
+}
+
+/* Reforço explícito do tema claro quando o sistema operacional
+   reporta preferência por modo claro (cobre navegadores que não usam
+   :root como fallback corretamente). */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-primary: #c1272d;
+    --color-primary-soft: #e0524a;
+    --color-secondary: #6b3f2a;
+    --color-secondary-soft: #8a5a3c;
+    --color-accent: #f2994a;
+    --color-accent-soft: #ffb877;
+
+    --color-bg: #fff6ee;
+    --color-bg-alt: #fdebdd;
+    --color-surface: #fffaf4;
+    --color-surface-alt: #fff1e3;
+    --color-border: #e8c9ab;
+
+    --color-text: #2b1810;
+    --color-text-muted: #6b5142;
+    --color-text-on-gradient: #fff6ee;
+
+    --gradient-hero: linear-gradient(135deg, #6b3f2a 0%, #c1272d 55%, #f2994a 100%);
+    --gradient-primary: linear-gradient(135deg, #c1272d 0%, #f2994a 100%);
+    --gradient-soft: linear-gradient(135deg, #fdebdd 0%, #ffe3c7 100%);
+    --gradient-card-border: linear-gradient(135deg, #c1272d, #f2994a);
+
+    --shadow-sm: 0 2px 8px rgba(107, 63, 42, 0.12);
+    --shadow-md: 0 8px 24px rgba(107, 63, 42, 0.18);
+  }
+}
+
+/* ----------------------------------------------------------------------
+   3. VARIÁVEIS — TEMA ESCURO (prefers-color-scheme: dark)
+   ---------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Paleta adaptada para fundo escuro — tons quentes mais saturados
+       e claros, garantindo contraste e legibilidade sem usar azul/cinza
+       frio em nenhum elemento. */
+    --color-primary: #ff6b4a;
+    --color-primary-soft: #ff8a6b;
+    --color-secondary: #c98a5e;
+    --color-secondary-soft: #e0a87c;
+    --color-accent: #ffa94d;
+    --color-accent-soft: #ffc479;
+
+    --color-bg: #1c1108;
+    --color-bg-alt: #261609;
+    --color-surface: #2b1810;
+    --color-surface-alt: #34200f;
+    --color-border: #4a2f1c;
+
+    --color-text: #f7e9da;
+    --color-text-muted: #d3b6a0;
+    --color-text-on-gradient: #fff6ee;
+
+    --gradient-hero: linear-gradient(135deg, #2b1810 0%, #8a2b22 55%, #d97a2e 100%);
+    --gradient-primary: linear-gradient(135deg, #d9432f 0%, #ffa94d 100%);
+    --gradient-soft: linear-gradient(135deg, #34200f 0%, #4a2a12 100%);
+    --gradient-card-border: linear-gradient(135deg, #ff6b4a, #ffa94d);
+
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.45);
+    --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* ----------------------------------------------------------------------
+   4. TIPOGRAFIA E ELEMENTOS BASE
+   ---------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+.heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 0.5em 0;
+  color: var(--color-text);
+}
+
+/* Bebas Neue é condensada e fica melhor em maiúsculas com leve
+   espaçamento — dá o tom de pôster de rua e lambe-lambe */
+h1,
+h2,
+.section-title {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 0.4em;
+}
+
+.section-subtitle {
+  color: var(--color-text-muted);
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ----------------------------------------------------------------------
+   5. UTILITÁRIOS DE GRADIENTE, CARDS E BOTÕES
+   ---------------------------------------------------------------------- */
+.gradient-bg-hero {
+  background: var(--gradient-hero);
+  color: var(--color-text-on-gradient);
+}
+
+.gradient-bg-soft {
+  background: var(--gradient-soft);
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-gradient-border {
+  position: relative;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  padding: 24px;
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(var(--color-surface), var(--color-surface)),
+    var(--gradient-card-border);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: #fff6ee;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: #fff6ee;
+}
+
+.btn-ghost {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-ghost:hover {
+  background: var(--color-bg-alt);
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--gradient-primary);
+  color: #fff6ee;
+}
+
+.badge-outline {
+  background: var(--color-surface-alt);
+  color: var(--color-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(193, 39, 45, 0.18);
+}
+
+.form-error {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.form-success {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-accent);
+  color: var(--color-secondary);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.iconBtn {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+}
+
+.badgeDot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--gradient-primary);
+  color: #fff6ee;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  animation: spin 0.8s linear infinite;
+}
+
+.spinner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--color-text-muted);
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-surface-alt) 25%, var(--color-bg-alt) 50%, var(--color-surface-alt) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 24, 16, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+}
+
+.modal-content {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  padding: 32px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+/* ======================================================================
+   6. LAYOUT — DESKTOP (min-width: 769px)
+   Regras pensadas para telas largas: navegação horizontal, grids com
+   múltiplas colunas, espaçamentos maiores.
+   ====================================================================== */
+@media (min-width: 769px) {
+  .section {
+    padding: 96px 0;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* ======================================================================
+   7. LAYOUT — MOBILE (max-width: 768px)
+   Regras pensadas para telas estreitas: tudo em coluna única, navegação
+   compacta, espaçamentos reduzidos.
+   ====================================================================== */
+@media (max-width: 768px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .modal-content {
+    padding: 22px;
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Visível só no mobile */
+.show-mobile-only {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .show-mobile-only {
+    display: flex !important;
+  }
+}

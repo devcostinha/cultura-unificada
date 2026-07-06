@@ -1,0 +1,137 @@
+/* ====================================================================
+   LANDING PAGE
+   ==================================================================== */
+
+/*
+  FOTO DE FUNDO DO HERO
+  Troque a URL abaixo pela foto da sua quebrada.
+  Dica: use uma imagem de no mínimo 1920px de largura pra não pixelar.
+*/
+.hero {
+  padding: 130px 0 100px;
+  position: relative;
+  overflow: hidden;
+  background-image: url('/bg_cover3.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  color: #fff6ee;
+}
+
+/* Degradê transparente na frente da foto, do escuro (esquerda/baixo)
+   pro laranja queimado, pra o texto ficar sempre legível */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.60) 55%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  z-index: 1;
+}
+
+.heroInner {
+  max-width: 760px;
+  position: relative;
+  z-index: 2;
+}
+
+.heroEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 246, 238, 0.15);
+  border: 1px solid rgba(255, 246, 238, 0.4);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 22px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  font-size: 4.4rem;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.0;
+}
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  opacity: 0.92;
+  margin-bottom: 36px;
+  max-width: 580px;
+  line-height: 1.6;
+}
+
+.heroActions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.pillarIcon {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-soft);
+}
+
+.eventsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.missionBlock {
+  background: var(--gradient-soft);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+}
+
+.ctaBanner {
+  background: var(--gradient-hero);
+  color: var(--color-text-on-gradient);
+  border-radius: var(--radius-lg);
+  padding: 56px;
+  text-align: center;
+}
+
+/* ======================================================================
+   DESKTOP (min-width: 769px)
+   ====================================================================== */
+@media (min-width: 769px) {
+  .heroTitle {
+    font-size: 6rem;
+  }
+}
+
+/* ======================================================================
+   MOBILE (max-width: 768px)
+   ====================================================================== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 56px 0 48px;
+    background-attachment: scroll;
+    background-position: center center;
+  }
+
+  .missionBlock,
+  .ctaBanner {
+    padding: 32px 22px;
+  }
+}

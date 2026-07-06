@@ -1,0 +1,111 @@
+/* ====================================================================
+   NAVBAR — bloco de estilos próprio do componente.
+   ==================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.links a {
+  color: var(--color-text-muted);
+  transition: color 0.15s ease;
+}
+
+.links a:hover,
+.links a.active {
+  color: var(--color-primary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.menuToggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.mobilePanel {
+  display: none;
+}
+
+/* ======================================================================
+   DESKTOP (min-width: 769px)
+   ====================================================================== */
+@media (min-width: 769px) {
+  .links {
+    display: flex;
+  }
+}
+
+/* ======================================================================
+   MOBILE (max-width: 768px)
+   ====================================================================== */
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .actions :global(.btn span.btn-label-long) {
+    display: none;
+  }
+
+  .mobilePanel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px 20px 22px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .mobilePanel a {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+}
