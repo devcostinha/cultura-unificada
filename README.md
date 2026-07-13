@@ -58,10 +58,10 @@ Acesse `http://localhost:3000`.
 
 Ver lista completa de arquivos na mensagem de entrega. Resumo das pastas:
 
-- `app/` — páginas (App Router): landing, login/registro/recuperação de senha, artistas, calendário, editais, mapa, perfil.
-- `components/` — componentes reutilizáveis (Navbar, Footer, cards, modais de formulário, notificações).
+- `app/` — páginas (App Router): landing, login/registro/recuperação de senha, artistas, calendário, editais, mapa, cursos, como-acessar-editais, sugestões, perfil, admin.
+- `components/` — componentes reutilizáveis (Navbar, Footer, cards, modais de formulário, notificações, FlyerCarousel, InstallButton).
 - `lib/` — cliente Supabase, AuthProvider, constantes (bairros da Zona Leste, categorias), notificações, configuração do Google Maps.
-- `supabase/schema.sql` — schema completo do banco (tabelas, índices, RLS, Realtime, trigger).
+- `supabase/` — schema completo, migrations (roles, flyers, admin v2), tabelas de sugestões e cursos, dados de exemplo.
 
 ## Notas de segurança
 

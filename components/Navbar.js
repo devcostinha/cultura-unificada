@@ -11,9 +11,11 @@ import styles from "./Navbar.module.css";
 
 const NAV_LINKS = [
   { href: "/artistas", label: "Artistas" },
-  { href: "/calendario", label: "Calendário Unificado" },
-  { href: "/mapa", label: "Mapeamento Cultural" },
+  { href: "/calendario", label: "Calendário" },
+  { href: "/mapa", label: "Mapa Cultural" },
   { href: "/editais", label: "Editais" },
+  { href: "/cursos", label: "Cursos" },
+  { href: "/como-acessar-editais", label: "Como Acessar Editais" },
   { href: "/sugestoes", label: "Sugestões" },
 ];
 

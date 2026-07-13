@@ -27,11 +27,15 @@ export const metadata = {
   description:
     "Espaço digital dos artistas e agentes culturais da Zona Leste: cadastro de artistas, Calendário Unificado de eventos, Mapeamento Cultural e Editais Abertos.",
   manifest: "/manifest.json",
-  themeColor: "#ff7300",
+  themeColor: "#B87800",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Cultura Unificada",
+    title: "Cultura Unificada ZL",
+  },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon-192.png",
   },
 };
 

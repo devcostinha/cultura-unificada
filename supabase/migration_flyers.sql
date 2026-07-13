@@ -5,10 +5,10 @@
 -- ====================================================================
 
 -- 1. Adiciona coluna de imagem na tabela de eventos
-ALTER TABLE public.evSentos
+ALTER TABLE public.eventos
   ADD COLUMN IF NOT EXISTS imagem_url text;
 
--- =================================A===================================
+-- ====================================================================
 -- 2. Cria o bucket de armazenamento para os flyers
 --    (imagens enviadas pelo formulário de eventos)
 -- ====================================================================
