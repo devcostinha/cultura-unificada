@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="80" ry="80" fill="#B87800"/>
+  <rect width="512" height="512" fill="#B87800"/>
   <text
     x="256"
-    y="318"
-    font-family="Arial, Helvetica, sans-serif"
+    y="330"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
     font-weight="900"
-    font-size="200"
+    font-size="210"
     fill="white"
     text-anchor="middle"
-    letter-spacing="-4"
+    letter-spacing="-6"
   >CUNI</text>
 </svg>
